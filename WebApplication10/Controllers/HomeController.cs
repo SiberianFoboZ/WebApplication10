@@ -14,31 +14,12 @@ namespace WebApplication10.Controllers
     public class HomeController : Controller
     {
 
-        private JSonMoney db;
-        public HomeController(JSonMoney sonMoney)
-        {
-            db = sonMoney;
-        }
-        public async Task<IActionResult> Index()
-        {
-            return View(await db.Mones.ToListAsync());
-        }
-        public IActionResult Create()
+     
+        public IActionResult Index()
         {
             return View();
         }
-        [HttpPost]
-        public async Task<IActionResult> Create(Money money)
-        {
-            db.Mones.Add(money);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult JsonExample()
-        {
-            return View();
-        }
+       
         
     }
 }     

@@ -1,46 +1,43 @@
-﻿
-@{
-    Layout = null;
-}
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
     <title> TestCase for company TiSS</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="wight=device-wight" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
-    <script language="javascript" type="text/javascript" src="jquery.min.js"></script>
-    <script language="javascript" type="text/javascript" src="jquery.jqplot.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="jquery.jqplot.css" />
     <script>
         function lastGet() {
             $.get('https://openexchangerates.org/api/latest.json', { app_id: 'bcf546b9a0ea43518b0cbcff6a43a1d6' }, function (data) {
                 console.log(data);
             });
+        }
     </script>
-
     <script>
-        $.jqplot('chardiv', [[[1, 2], [3, 5.12], [5, 13.1]]],
-            {
-                title: 'Exponetial Line',
-                axes: { yaxis: { min: -10, max: 50 } },
-                series: [{color:'#fffff'}]
-
+        function period() {
+            var query_vars = {
+                app_id: 'bcf546b9a0ea43518b0cbcff6a43a1d6',
+                start: '2012-01-01',
+                end: '2012-01-31',
+                base: 'AUD',
+                symbols: 'BTC,EUR,HKD',
+                prettyprint: 1
             }
-                );
-        
+
+            $.get('https://openexchangerates.org/api/time-series.json', query_vars, function (data) {
+                console.log(data);
+            });
+        }
+          
     </script>
-
-
 </head>
 <body>
     <text>USR</text>
     <form action="" method="get">
         Date: <input id="datatag" type="date" value="2018-07-02" name=" datalast" /><br />
-              <input type="button" value="get" onclick="lastGet()" />
+        <input type="button" value="get" onclick="lastGet()" />
+        <input type="button" value="per" onclick="period()" />
 
     </form>
-  <div id="chardiv" style="height:400px;width:300px;" ></div>
+
 </body>
 </html>     
