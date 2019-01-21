@@ -19,7 +19,12 @@ namespace WebApplication10.Controllers
         {
             return View();
         }
-       
+
+        private ParseJson db;
+        public HomeController(ParseJson parsejsm)
+        {
+            db = parsejsm;
+        }
         
     }
 }     

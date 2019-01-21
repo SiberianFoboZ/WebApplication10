@@ -1,43 +1,47 @@
-﻿<!doctype html>
+﻿
+@{
+    Layout = null;
+}
+
+@{ 
+    //var db = Database.open("ratas"); не работает в asp.net core 2.1 =(( 
+}
+
+<!DOCTYPE html>
+
 <html>
 <head>
-    <title> TestCase for company TiSS</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="wight=device-wight" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        function lastGet() {
-            $.get('https://openexchangerates.org/api/latest.json', { app_id: 'bcf546b9a0ea43518b0cbcff6a43a1d6' }, function (data) {
-                console.log(data);
-            });
-        }
-    </script>
-    <script>
-        function period() {
-            var query_vars = {
-                app_id: 'bcf546b9a0ea43518b0cbcff6a43a1d6',
-                start: '2012-01-01',
-                end: '2012-01-31',
-                base: 'AUD',
-                symbols: 'BTC,EUR,HKD',
-                prettyprint: 1
-            }
-
-            $.get('https://openexchangerates.org/api/time-series.json', query_vars, function (data) {
-                console.log(data);
-            });
-        }
-          
-    </script>
-</head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   
+  </head>
 <body>
-    <text>USR</text>
-    <form action="" method="get">
-        Date: <input id="datatag" type="date" value="2018-07-02" name=" datalast" /><br />
-        <input type="button" value="get" onclick="lastGet()" />
-        <input type="button" value="per" onclick="period()" />
+    <!--input type="button" onclick="Parse" value="create -->
+    <canvas id="myChart"></canvas>
+    <!-- тестовый скрипт на проверку работы отображения графиков-->
+    <script>
 
-    </form>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
 
+            // The data for our dataset
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "My First dataset",
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [0, 10, 5, 2, 20, 30, 45],
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    </script>
 </body>
-</html>     
+</html>
