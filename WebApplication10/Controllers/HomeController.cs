@@ -23,12 +23,13 @@ namespace WebApplication10.Controllers
         public IActionResult Index(DateTime lastDate, DateTime firstDate)
         {
 
-            int days = (lastDate.Day - firstDate.Day);
+            int daysadv = (lastDate.Day - firstDate.Day);
+            int day = firstDate.Day;
             int year = firstDate.Year;
             int month = firstDate.Month;
-            for (int i = 0; i <days;i++)
+            for (int i = 0; i <daysadv;i++)
             {
-                WebRequest request = WebRequest.Create("https://openexchangerates.org/api/historical/2019-01-"+i+".json?app_id=bcf546b9a0ea43518b0cbcff6a43a1d6&symbols=USD%2CRUB%2CEUR%2CGBP%2CJPY");
+                WebRequest request = WebRequest.Create("https://openexchangerates.org/api/historical/2019-01-"+(day+i)+".json?app_id=bcf546b9a0ea43518b0cbcff6a43a1d6&symbols=USD%2CRUB%2CEUR%2CGBP%2CJPY");
                 WebResponse web = request.GetResponse();
                 Stream st = web.GetResponseStream();
                 StreamReader reader = new StreamReader(st);
