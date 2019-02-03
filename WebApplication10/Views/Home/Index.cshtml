@@ -1,47 +1,13 @@
 ﻿
-@{
-    Layout = null;
-}
+@model  WebApplication10.Models.Date
 
-@{ 
-    //var db = Database.open("ratas"); не работает в asp.net core 2.1 =(( 
-}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 
-<!DOCTYPE html>
+<form method="get">
+<1text>Начальная дата</1text>
+<input type="date" name="fistDate" />
+    <text> Конченая дата</text>
+    <input type="date" name="lastDate" />
+    <input type="submit" value="send" />    
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-   
-  </head>
-<body>
-    <!--input type="button" onclick="Parse" value="create -->
-    <canvas id="myChart"></canvas>
-    <!-- тестовый скрипт на проверку работы отображения графиков-->
-    <script>
-
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'line',
-
-            // The data for our dataset
-            data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
-                datasets: [{
-                    label: "My First dataset",
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 20, 30, 45],
-                }]
-            },
-
-            // Configuration options go here
-            options: {}
-        });
-    </script>
-</body>
-</html>
+</form>

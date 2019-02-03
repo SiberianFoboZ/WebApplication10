@@ -7,10 +7,11 @@ using WebApplication10.Models;
 
 namespace WebApplication10.Models
 {
-    public class MoneyJson : DbContext
+    public class JsonContext : DbContext
     {
-        DbSet<ParseJson> parseJsons { get; set; }
-        public MoneyJson(DbContextOptions<MoneyJson> options) : base(options) // передача данных в структуру данных EF core 
+        public DbSet<Rates> jsons { get; set; }
+        public DbSet<Date> dates { get; set; }
+        public JsonContext(DbContextOptions<JsonContext> options) : base(options)
         {
             Database.EnsureCreated();
         }

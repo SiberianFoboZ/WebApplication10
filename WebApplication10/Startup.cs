@@ -23,11 +23,10 @@ namespace WebApplication10
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddScoped<ParseJson>(); // иницилизация модели парсера данных JSON 
-            services.AddMvc();
+        {                        
             string connection = Configuration.GetConnectionString("DefaultConnection"); // строка подключения из файла конфигурации 
-            services.AddDbContext<MoneyJson>(options => options.UseSqlServer(connection)); // добавляем контекст MoneyJson в качестве сервиса
+            services.AddDbContext<JsonContext>(options => options.UseSqlServer(connection)); // добавляем контекст MoneyJson в качестве сервиса
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
